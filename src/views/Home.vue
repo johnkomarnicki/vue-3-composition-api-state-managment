@@ -35,6 +35,7 @@ export default {
 <style lang="scss" scoped>
 h1 {
   margin-top: 16px;
+  text-align: center;
 }
 
 .count {
@@ -44,7 +45,7 @@ h1 {
 }
 
 .change-count {
-  margin-top: 32px;
+  margin: 32px 0;
   display: flex;
   justify-content: center;
   gap: 32px;
@@ -59,6 +60,25 @@ h1 {
     border-radius: 50%;
     background-color: #f1f1f1;
     font-size: 40px;
+  }
+}
+
+.cod {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  input {
+    margin: 16px 0;
+    padding: 6px;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>
