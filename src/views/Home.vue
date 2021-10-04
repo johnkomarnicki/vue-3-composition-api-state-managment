@@ -8,26 +8,46 @@
       <i @click="increase" class="fal fa-plus"></i>
       <i @click="decrease" class="fal fa-minus"></i>
     </div>
+
+    <div class="cod">
+      <h1>Color of the day:</h1>
+
+      <p :style="{ color: color }">{{ color }}</p>
+
+      <input type="text" name="color" v-model="color" />
+    </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed } from "vue";
+import store from "../store/index";
 export default {
   name: "Home",
   components: {},
   setup() {
-    const count = ref(0);
+    const count = computed(() => store.state.count);
+
+    const methods = store.methods;
 
     const increase = () => {
-      count.value++;
+      methods.increase();
     };
 
     const decrease = () => {
-      count.value--;
+      methods.decrease();
     };
 
-    return { count, increase, decrease };
+    const color = computed({
+      get() {
+        return store.state.color;
+      },
+      set(payload) {
+        methods.setColor(payload);
+      },
+    });
+
+    return { count, increase, decrease, color, store };
   },
 };
 </script>
